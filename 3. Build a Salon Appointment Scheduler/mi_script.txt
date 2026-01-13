@@ -1,0 +1,31 @@
+create table customers(
+	customer_id serial primary key,
+  phone varchar(12) unique,
+  name varchar(40)
+);
+
+create table appointments(
+  appointment_id serial primary key,
+  customer_id int references customers(customer_id),
+  service_id int references services(service_id),
+  time varchar(30)
+);
+
+create table services(
+  service_id serial primary key,
+  name varchar(40)
+);
+
+INSERT INTO services (name) VALUES
+('Corte de cabello'),
+('Peinado'),
+('Manicure'),
+('Pedicure'),
+('Tratamiento capilar'),
+('Tinte de cabello');
+
+// Para reiniciar el servicio
+sudo service postgresql start
+
+
+psql --username=freecodecamp --dbname=postgres
