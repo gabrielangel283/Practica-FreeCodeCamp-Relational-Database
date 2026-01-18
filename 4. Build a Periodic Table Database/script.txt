@@ -1,0 +1,22 @@
+// Para reiniciar el servicio
+sudo service postgresql start
+
+// Ingresar a la bd en el codespace
+psql --username=freecodecamp --dbname=periodic_table
+
+// Backup de la bd
+pg_dump -cC --inserts -U freecodecamp periodic_table > periodic_table.sql
+
+// Salvar la bd al codespace
+psql -U postgres < periodic_table.sql
+
+// SQL de la tabla types
+create table types(
+  type_id int primary key,
+  type varchar(30) not null
+);
+
+insert into types(type_id,type) values 
+(1,'nonmetal'),
+(2,'metal'),
+(3,'metalloid');
